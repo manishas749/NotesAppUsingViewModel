@@ -44,6 +44,7 @@ class ListNotes : Fragment(), SearchView.OnQueryTextListener {
         savedInstanceState: Bundle?
     ): View?{
         binding= FragmentListNotesBinding.inflate(inflater,container,false)
+
         (activity as AppCompatActivity).setSupportActionBar(binding.toolBar)
         (activity as AppCompatActivity).supportActionBar?.show()
         binding.rcycle.layoutManager = LinearLayoutManager(context)
