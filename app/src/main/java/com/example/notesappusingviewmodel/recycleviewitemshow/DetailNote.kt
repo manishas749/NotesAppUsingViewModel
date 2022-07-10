@@ -10,7 +10,7 @@ import com.example.notes_app.datamodel.Notes
 import com.example.notes_app.viewmodel.NotesViewModel
 import com.example.notesappusingviewmodel.databinding.FragmentDetailNoteBinding
 
-class Detail_Note : Fragment() {
+class DetailNote : Fragment() {
     lateinit var binding: FragmentDetailNoteBinding
     lateinit var notesViewModel: NotesViewModel
     var adapterPosition: Int = 0
@@ -33,19 +33,15 @@ class Detail_Note : Fragment() {
         binding.textviewTitleDetail.setText(titleNote)
         binding.textviewDescriptionDetail.setText(descriptionNote)
         adapterPosition=position
+
+        //code to update and edit the Note
         binding.btnEdit.setOnClickListener()
         {
             editData()
             onDestroy()
             activity?.supportFragmentManager?.popBackStack()
-
         }
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
     private fun editData() {
@@ -73,8 +69,6 @@ class Detail_Note : Fragment() {
         return !(android.text.TextUtils.isEmpty(noteTitle) && android.text.TextUtils.isEmpty(
             noteDescription
         ))
-
-
     }
 }
 

@@ -7,9 +7,11 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.notes_app.datamodel.Notes
 import com.example.notes_app.viewmodel.NotesViewModel
@@ -20,8 +22,8 @@ import com.example.notesappusingviewmodel.databinding.FragmentAddNotesBinding
 class AddNotes : Fragment() {
     private lateinit var notesViewModel: NotesViewModel  //Initialize viewModel
     private lateinit var binding: FragmentAddNotesBinding
-    //lateinit var arrayAdapter: ArrayAdapter<String>
-    // var stringAutoShow: ArrayList<String> = ArrayList()
+    lateinit var arrayAdapter: ArrayAdapter<String>
+     var stringAutoShow: ArrayList<String> = ArrayList()
 
 
 
@@ -36,29 +38,20 @@ class AddNotes : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddNotesBinding.inflate(inflater, container, false)
+        //where user will get the autosuggestion in Textbox last 5 title will displayed
           notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
-        /* notesViewModel.readAllNotes.observe(viewLifecycleOwner, Observer { notes ->
+          notesViewModel.readAllNotes.observe(viewLifecycleOwner, Observer { notes ->
+          val titleNote: ArrayList<Notes> = notes as ArrayList<Notes>
+             for(e in titleNote)
+             {
+                 stringAutoShow.add(e.title)
+             }
+           val autosuggestion=stringAutoShow.distinct()
+             arrayAdapter= ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1,autosuggestion.takeLast(5))
+             binding.TitleTextBox.setAdapter(arrayAdapter)
+         })
 
-
-
-         })*/
-
-
-
-
-
-
-
-        /* val stringArray: Array<String> =
-                stringAutoShow.stream().toArray { arrayOfNulls<String>(it) }
-            arrayAdapter =
-                ArrayAdapter<String>(
-                    requireContext(),
-                    android.R.layout.simple_list_item_1,
-                    stringArray.takeLast(5)
-                )*/
-
-
+      // where user can press save button to save and data will save in database
         binding.saveButton.setOnClickListener{
             insertDataToDataBase()
 
@@ -69,7 +62,6 @@ class AddNotes : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     private fun insertDataToDataBase() {

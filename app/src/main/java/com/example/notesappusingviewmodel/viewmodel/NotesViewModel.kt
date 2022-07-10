@@ -11,7 +11,7 @@ import com.example.notes_app.repository.NotesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class NotesViewModel(application: Application) :AndroidViewModel(application) {
+class NotesViewModel(application: Application) : AndroidViewModel(application) {
 
     val readAllNotes: LiveData<List<Notes>>
     private val repository: NotesRepository
@@ -33,17 +33,17 @@ class NotesViewModel(application: Application) :AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
 
             repository.deleteNotes(notes)
-
         }
     }
-        fun updateNotes(notes: Notes) {
-            viewModelScope.launch(Dispatchers.IO) {
 
-                repository.updateNotes(notes)
+    fun updateNotes(notes: Notes) {
+        viewModelScope.launch(Dispatchers.IO) {
 
-            }
+            repository.updateNotes(notes)
+        }
     }
-    fun searchDatabase(searchQuery: String): LiveData<List<Notes>>{
+
+    fun searchDatabase(searchQuery: String): LiveData<List<Notes>> {
         return repository.searchDatabase(searchQuery).asLiveData()
     }
 }
