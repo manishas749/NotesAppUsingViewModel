@@ -19,21 +19,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:hint="Title"
+            android:hint="@string/Title"
             android:padding="10dp"
-            android:textSize="30dp"
-            android:textStyle="bold"></EditText>
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:inputType="text"
+            android:autofillHints="title">
+
+        </EditText>
 
         <EditText
             android:id="@+id/textviewDescriptionDetail"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_margin="20dp"
-            android:hint="Content"
+            android:hint="@string/Content"
             android:inputType="date|textLongMessage|textAutoCorrect|textMultiLine|number|textImeMultiLine"
             android:padding="10dp"
-            android:textSize="30dp"
-            android:textStyle="bold"></EditText>
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:autofillHints="content">
+
+        </EditText>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -49,18 +56,9 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.136"></Button>
+                app:layout_constraintVertical_bias="0.136">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/delete"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.432"
-                app:layout_constraintStart_toEndOf="@+id/btnEdit"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.136"></Button>
+            </Button>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

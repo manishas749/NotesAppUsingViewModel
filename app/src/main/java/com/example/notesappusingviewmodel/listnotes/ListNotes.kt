@@ -15,8 +15,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notes_app.addnote.AddNotes
-import com.example.notes_app.showitemrecycleview.DetailNote
+import com.example.notesappusingviewmodel.addnote.AddNotes
+import com.example.notesappusingviewmodel.recycleviewitemshow.DetailNote
 import com.example.notes_app.viewmodel.NotesViewModel
 import com.example.notesappusingviewmodel.R
 import com.example.notesappusingviewmodel.adapter.NotesAdapter
@@ -40,7 +40,7 @@ class ListNotes : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentListNotesBinding.inflate(inflater, container, false)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolBar)
@@ -54,6 +54,7 @@ class ListNotes : Fragment(), SearchView.OnQueryTextListener {
         })
         //Delete by swiping right and left code on recycleView note
         setRecyclerViewItemTouchListener()
+
         //RecycleView item click code to display it and where we can update it
         setAdapterOnClickListener()
         return binding.root

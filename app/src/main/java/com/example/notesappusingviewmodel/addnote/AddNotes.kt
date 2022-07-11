@@ -1,4 +1,4 @@
-package com.example.notes_app.addnote
+package com.example.notesappusingviewmodel.addnote
 
 import android.os.Build
 import android.os.Bundle
@@ -22,8 +22,8 @@ import com.example.notesappusingviewmodel.databinding.FragmentAddNotesBinding
 class AddNotes : Fragment() {
     private lateinit var notesViewModel: NotesViewModel  //Initialize viewModel
     private lateinit var binding: FragmentAddNotesBinding
-    lateinit var arrayAdapter: ArrayAdapter<String>
-     var stringAutoShow: ArrayList<String> = ArrayList()
+   private lateinit var arrayAdapter: ArrayAdapter<String>
+   private var stringAutoShow: ArrayList<String> = ArrayList()
 
 
 
@@ -36,9 +36,10 @@ class AddNotes : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         binding = FragmentAddNotesBinding.inflate(inflater, container, false)
-        //where user will get the autosuggestion in Textbox last 5 title will displayed
+
+        //where user will get the autosuggestion in textBox last 5 title will displayed
           notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
           notesViewModel.readAllNotes.observe(viewLifecycleOwner, Observer { notes ->
           val titleNote: ArrayList<Notes> = notes as ArrayList<Notes>

@@ -6,5 +6,8 @@
     <string name="save">Save</string>
     <string name="edit">Edit</string>
     <string name="search">Search</string>
+    <string name="Content">content</string>
+    <string name="Title">title</string>
+    <string name="FloatingButton">floating</string>
 
 </resources>

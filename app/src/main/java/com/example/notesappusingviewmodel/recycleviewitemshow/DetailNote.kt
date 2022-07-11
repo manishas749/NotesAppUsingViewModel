@@ -1,4 +1,4 @@
-package com.example.notes_app.showitemrecycleview
+package com.example.notesappusingviewmodel.recycleviewitemshow
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,20 +11,15 @@ import com.example.notes_app.viewmodel.NotesViewModel
 import com.example.notesappusingviewmodel.databinding.FragmentDetailNoteBinding
 
 class DetailNote : Fragment() {
-    lateinit var binding: FragmentDetailNoteBinding
-    lateinit var notesViewModel: NotesViewModel
-    var adapterPosition: Int = 0
+    private lateinit var binding: FragmentDetailNoteBinding
+    private lateinit var notesViewModel: NotesViewModel
+    private var adapterPosition: Int = 0
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailNoteBinding.inflate(inflater, container, false)
         notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
         val titleNote = requireArguments().getString("title")
